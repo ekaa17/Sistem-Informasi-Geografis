@@ -13,27 +13,29 @@
 
     <!-- Nav -->
     <li class="nav-item">
-      <a href=" " class="nav-link collapsed">
+      <a href="{{ url('/data-staff') }}" class="nav-link {{ Request::is('data-staff*') ? '' : 'collapsed' }}">
         <i class="bi bi-people-fill"></i>
-        <span>Fitur 1</span>
+        <span>Data Karyawan</span>
+      </a>
+    </li><!-- End Nav -->
+    
+    <!-- Nav -->
+    <li class="nav-item">
+      <a href="{{ url('/data-maps') }} " class="nav-link collapsed">
+        <i class="bi bi-database"></i>
+        <span>Data Lahan</span>
       </a>
     </li><!-- End Nav -->
 
     <!-- Nav -->
     <li class="nav-item">
       <a href=" " class="nav-link collapsed">
-        <i class="bi bi-people-fill"></i>
-        <span>Fitur 2</span>
+        <i class="bi bi-map"></i>
+        <span>Maps</span>
       </a>
     </li><!-- End Nav -->
 
-    <!-- Nav -->
-    <li class="nav-item">
-      <a href=" " class="nav-link collapsed">
-        <i class="bi bi-people-fill"></i>
-        <span>Fitur 3</span>
-      </a>
-    </li><!-- End Nav -->
+  
 
     <!-- Logout Nav -->
     <li class="nav-item">

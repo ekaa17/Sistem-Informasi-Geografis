@@ -4,7 +4,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{ asset('assets/img/logo.jpg') }}" alt="">
-        <span class="d-none d-lg-block"> E-Rapor Siswa </span>
+        <span class="d-none d-lg-block"> S-Geografis </span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -24,13 +24,13 @@
           </a><!-- End Profile Iamge Icon --> --}}
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Tok Dahlang</span>
+            <img src="{{ asset('assets/img/profile.png') }}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Kilua</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Tok Dahlang</h6>
+              <h6>Kilua</h6>
               <span>Admin</span>
               {{-- <h6>{{ auth()->user()->nama }}</h6>
               <span>{{ auth()->user()->role }}</span> --}}

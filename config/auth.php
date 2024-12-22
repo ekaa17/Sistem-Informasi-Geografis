@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'staff',
         ],
     ],
 
@@ -60,9 +60,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+        'staff' => [ // Tambahkan provider untuk staff
+        'driver' => 'eloquent',
+        'model' => App\Models\Staff::class,
         ],
 
         // 'users' => [

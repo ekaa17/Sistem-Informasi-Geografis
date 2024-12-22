@@ -1,6 +1,6 @@
 <footer id="footer" class="footer">
     <div class="copyright">
-        <b> SISTEM INFORMASI ... </b> ....
+        <b> SISTEM INFORMASI GEOGRAFIS </b> 
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
