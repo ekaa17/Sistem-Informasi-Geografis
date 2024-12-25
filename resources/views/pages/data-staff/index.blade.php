@@ -98,11 +98,11 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel{{ $data->id }}">Hapus Data Staff</h5>
+                                                    <h5 class="modal-title" id="deleteModalLabel{{ $data->id }}">Hapus Data</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Apakah Anda yakin ingin menghapus Staff <strong>{{ $data->name }}</strong>?
+                                                    Apakah Anda yakin ingin menghapus data dari <strong>{{ $data->name }}</strong>?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="{{ route('data-staff.destroy', $data->id) }}" method="POST">
