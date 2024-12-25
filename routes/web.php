@@ -29,7 +29,7 @@ Route::group(['middleware' => 'cekrole:Super Admin,Admin,User'], function() {
     Route::get('/dashboard', 
         function () {return view('pages/dashboard');
     });
-    Route::resource('/data-lahan', LokasiBidangController::class)->names('data-maps');
+    Route::resource('/data-lahan', LokasiBidangController::class)->names('data-lahan');
 });
 
 // Hak akses milik super admin dan admin

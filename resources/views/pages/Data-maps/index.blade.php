@@ -33,22 +33,22 @@
                 <div class="card">
                     <div class="card-body pt-3">
                         <div class="d-flex align-items-center justify-content-between m-3">
-                            <h5 class="card-title">Total : Lahan</h5>
+                            <h5 class="card-title">Total : {{ count($lokasiBidangs) }} Lahan</h5>
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
-                                <i class="fas fa-plus fa-sm text-white-50"></i> Data Baru
+                                <i class="bi bi-plus-square"></i> Data Baru
                             </button>
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table datatable" id="pegawai">
+                            <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
                                         <th>Lokasi Bidang</th>
                                         <th>Nama Bidang</th>
                                         <th>Nama Pemilik</th>
-                                        <th>Latitude</th>
                                         <th>Longitude</th>
+                                        <th>Latitude</th>
                                         <th>Luas Lahan (m²)</th>
                                         <th>Atas Hak</th>
                                         <th>Tanggal Transaksi</th>
@@ -59,12 +59,12 @@
                                 <tbody>
                                     @forelse ($lokasiBidangs as $lokasiBidang)
                                     <tr>
-                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $lokasiBidang->lokasi_bidang }}</td>
                                         <td>{{ $lokasiBidang->nama_bidang }}</td>
                                         <td>{{ $lokasiBidang->nama_pemilik }}</td>
-                                        <td>{{ $lokasiBidang->latitude }}</td>
                                         <td>{{ $lokasiBidang->longitude }}</td>
+                                        <td>{{ $lokasiBidang->latitude }}</td>
                                         <td>{{ $lokasiBidang->luas_lahan }} m²</td>
                                         <td>{{ $lokasiBidang->atas_hak }}</td>
                                         <td>{{ $lokasiBidang->tanggal_transaksi }}</td>
