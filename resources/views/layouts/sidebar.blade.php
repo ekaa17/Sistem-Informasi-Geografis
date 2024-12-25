@@ -21,7 +21,7 @@
     
     <!-- Nav -->
     <li class="nav-item">
-      <a href="{{ url('/data-maps') }} " class="nav-link collapsed">
+      <a href="{{ url('/data-maps') }} " class="nav-link {{ Request::is('data-maps*') ? '' : 'collapsed' }}">
         <i class="bi bi-database"></i>
         <span>Data Lahan</span>
       </a>
@@ -29,7 +29,7 @@
 
     <!-- Nav -->
     <li class="nav-item">
-      <a href=" " class="nav-link collapsed">
+      <a href="{{ url('/maps') }}" class="nav-link collapsed">
         <i class="bi bi-map"></i>
         <span>Maps</span>
       </a>

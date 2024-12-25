@@ -83,4 +83,14 @@ class LokasiBidangController extends Controller
 
         return redirect()->route('data-maps.index')->with('success', 'Data berhasil dihapus');
     }
+
+    public function titik_lokasi() {
+        return view('pages.data-maps.maps');
+    }
+
+    public function json() {
+        $titik_lokasi = LokasiBidang::all();
+        return response()->json($titik_lokasi);
+    }
+    
 }
