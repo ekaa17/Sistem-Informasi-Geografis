@@ -87,7 +87,7 @@
                                                         <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <form action="{{ route('data-maps.update', $lokasiBidang->id) }}" method="POST">
+                                                    <form action="{{ route('data-lahan.update', $lokasiBidang->id) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
@@ -145,7 +145,7 @@
                                                     Apakah Anda yakin ingin menghapus jabatan <strong>{{ $lokasiBidang->nama_bidang }}</strong>?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form action="{{ route('data-maps.destroy', $lokasiBidang->id) }}" method="POST">
+                                                    <form action="{{ route('data-lahan.destroy', $lokasiBidang->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Hapus</button>
@@ -175,7 +175,7 @@
                     <h5 class="modal-title" id="createModalLabel">Tambah Data Baru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('data-maps.store') }}" method="POST">
+                <form action="{{ route('data-lahan.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">

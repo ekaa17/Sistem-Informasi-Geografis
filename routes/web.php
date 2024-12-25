@@ -23,11 +23,22 @@ Route::get('/', function () {
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
-Route::group(['middleware' => 'cekrole:Admin,Karyawan'], function() {
-    Route::get('/dashboard', function () {return view('pages/dashboard');});
-    Route::resource('/data-staff', StaffController::class)->names('data-staff');
-    Route::resource('/data-maps', LokasiBidangController::class)->names('data-maps');
+
+// Hak akses semua user
+Route::group(['middleware' => 'cekrole:Super Admin,Admin,User'], function() {
+    Route::get('/dashboard', 
+        function () {return view('pages/dashboard');
+    });
+    Route::resource('/data-lahan', LokasiBidangController::class)->names('data-maps');
+});
+
+// Hak akses milik super admin dan admin
+Route::group(['middleware' => 'cekrole:Super Admin,Admin,User'], function() {
     Route::get('/maps', [LokasiBidangController::class, 'titik_lokasi']);
     Route::get('/data-titik', [LokasiBidangController::class, 'json']);
 });
 
+// Hak akses milik superadmin
+Route::group(['middleware' => 'cekrole:Super Admin'], function() {
+    Route::resource('/data-staff', StaffController::class)->names('data-staff');
+});

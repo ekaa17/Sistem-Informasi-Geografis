@@ -14,7 +14,7 @@ class StaffController extends Controller
         $no = 1;
         $data = Staff::orderBy('name')->get();
         
-        return view('pages.data-staff.index', compact('no', 'data', ));
+        return view('pages.data-staff.index', compact('no', 'data'));
     }
 
     public function create()
@@ -32,7 +32,7 @@ class StaffController extends Controller
             'email' => 'required|unique:staff,email',
             'role' => 'required',
             'password' => 'required',
-            'profile' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Optional: untuk validasi profil
+            'profile' => 'required|image',
         ]);
     
         // Upload profile jika ada

@@ -33,9 +33,14 @@
                 <div class="card">
                     <div class="card-body pt-3">
                         <div class="d-flex align-items-center justify-content-between m-3">
-                            <h5 class="card-title">Total :  Karyawan |  Admin</h5>
+                            <h5 class="card-title">
+                                Total : 
+                                {{ $data->where('role', 'Super Admin')->count() }}  Super Admin | 
+                                {{ $data->where('role', 'Admin')->count() }}  Admin | 
+                                {{ $data->where('role', 'User')->count() }}  User
+                            </h5>
                             <a href="{{ route('data-staff.create') }}" class="btn btn-primary">
-                                <i class="fas fa-plus fa-sm text-white-50"></i> Data Baru
+                                <i class="bi bi-plus-square"></i> Data Baru
                             </a>
                         </div>
 
@@ -45,7 +50,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Nama</th>
-                                        <th>No Telpon</th>
+                                        <th>No Telepon</th>
                                         <th>Email</th>
                                         <th>Role</th>
                                         <th>Profile</th>
@@ -55,26 +60,38 @@
                                 <tbody>
                                     @foreach($data as $data)
                                     <tr>
-                                        <th>{{ $no++ }}</th>
-                                        <th>{{ $data->name }}</th>h>
-                                        <th>{{ $data->no_telepon }}</th>
-                                        <th>{{ $data->email }}</th>
-                                        <th>{{ $data->role }}</th>
-                                        <th>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $data->name }}</td>
+                                        <td>
+                                            <u>
+                                                <i class="bi bi-whatsapp"></i> <a href="https://wa.me/{{ $data->no_telepon }}" target="_blank">{{ $data->no_telepon }}</a>
+                                            </u>
+                                        </td>
+                                        <td>{{ $data->email }}</td>
+                                        <td>
+                                            @if($data->role == 'Super Admin')
+                                                <span class="badge rounded-pill bg-success">{{ $data->role }}</span>
+                                            @elseif($data->role == 'Admin')
+                                                <span class="badge rounded-pill bg-primary">{{ $data->role }}</span>
+                                            @elseif($data->role == 'User')
+                                                <span class="badge rounded-pill bg-warning">{{ $data->role }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
                                             @if($data->profile)
                                                 <img src="{{ asset('assets/img/profile/' . $data->profile) }}" alt="profile" width="50">
                                             @else
                                                 Tidak Ada Profile
                                             @endif
-                                        </th>
-                                        <th>
+                                        </td>
+                                        <td>
                                             <a href="{{ route('data-staff.edit', $data->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="bi bi-pencil-fill"></i>
                                             </a>
                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
                                                 <i class="bi bi-trash-fill"></i>
                                             </button>
-                                        </th>
+                                        </td>
                                     </tr>
                                      <!-- Modal Hapus data staff-->
                                      <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $data->id }}" aria-hidden="true">
