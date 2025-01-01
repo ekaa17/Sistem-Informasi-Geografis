@@ -45,7 +45,8 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Lokasi Bidang</th>
-                                        <th>Nama Bidang</th>
+                                        <th>blok </th>
+                                        <th>Bidang </th>
                                         <th>Nama Pemilik</th>
                                         <th>Longitude</th>
                                         <th>Latitude</th>
@@ -61,7 +62,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $lokasiBidang->lokasi_bidang }}</td>
-                                        <td>{{ $lokasiBidang->nama_bidang }}</td>
+                                        <td>{{ $lokasiBidang->blok }}</td>
+                                        <td>{{ $lokasiBidang->Bidang }}</td>
                                         <td>{{ $lokasiBidang->nama_pemilik }}</td>
                                         <td>{{ $lokasiBidang->longitude }}</td>
                                         <td>{{ $lokasiBidang->latitude }}</td>
@@ -183,7 +185,7 @@
                             <input type="text" class="form-control" id="lokasi_bidang" name="lokasi_bidang" required>
                         </div>
                         <div class="mb-3">
-                            <label for="nama_bidang" class="form-label">Nama Bidang</label>
+                            <label for="nama_bidang" class="form-label">Blok Bidang</label>
                             <input type="text" class="form-control" id="nama_bidang" name="nama_bidang" required>
                         </div>
                         <div class="mb-3">

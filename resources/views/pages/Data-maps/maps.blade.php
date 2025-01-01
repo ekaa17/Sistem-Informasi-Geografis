@@ -22,8 +22,8 @@
                     </div>
                     <script>
 
-                        const map = L.map('map').setView([-6.3732812,106.6241473,9.39], 13);
-
+                        const map = L.map('map').setView([-6.0258259735842366, 105.96390242532742], 13);    
+                        
                         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             maxZoom: 19,
                             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -35,7 +35,8 @@
                                     var marker = L.marker([parseFloat(data[index].longitude),parseFloat(data[index].latitude)]).addTo(map);
 
                                     var popupContent = `
-                                        <b>Bidang:</b> ${data[index].nama_bidang}<br>
+                                        <b>Bidang:</b> ${data[index].blok}<br>
+                                        <b>Bidang:</b> ${data[index].Bidang}<br>
                                         <b>Pemilik:</b> ${data[index].nama_pemilik}<br>
                                         <b>Luas Lahan:</b> ${data[index].luas_lahan} m²<br>
                                         <b>Atas Hak:</b> ${data[index].atas_hak}<br>

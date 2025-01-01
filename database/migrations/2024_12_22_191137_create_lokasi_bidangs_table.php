@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('lokasi_bidangs', function (Blueprint $table) {
             $table->id(); // Primary key
             $table->string('lokasi_bidang'); // Lokasi Bidang
-            $table->string('nama_bidang'); // Nama Bidang
+            $table->string('blok'); // Nama Bidang
+            $table->string('Bidang'); // Nama Bidang
             $table->string('nama_pemilik'); // Nama Pemilik
-            $table->decimal('latitude', 10, 7); // Latitude (koordinat)
-            $table->decimal('longitude', 10, 7); // Longitude (koordinat)
+            $table->decimal('latitude', 12, 8); // Latitude (koordinat)
+            $table->decimal('longitude', 12, 8); // Longitude (koordinat)
             $table->integer('luas_lahan'); // Luas Lahan
             $table->string('atas_hak'); // Atas Hak
             $table->date('tanggal_transaksi'); // Tanggal Transaksi

@@ -16,7 +16,8 @@ class LokasiBidangSeeder extends Seeder
         LokasiBidang::insert([
             [
                 'lokasi_bidang' => 'Lokasi A',
-                'nama_bidang' => 'Bidang A',
+                'Blok' => 'Blok A',
+                'Bidang' => 'Bidang A',
                 'nama_pemilik' => 'Pemilik A',
                 'latitude' => 106.6468142,
                 'longitude' => -6.3905425,
@@ -28,7 +29,8 @@ class LokasiBidangSeeder extends Seeder
             ],
             [
                 'lokasi_bidang' => 'Lokasi B',
-                'nama_bidang' => 'Bidang B',
+                'Blok' => 'Blok B',
+                'Bidang' => 'Bidang B',
                 'nama_pemilik' => 'Pemilik B',
                 'latitude' => 106.6241473,
                 'longitude' => -6.3732812,
@@ -40,7 +42,8 @@ class LokasiBidangSeeder extends Seeder
             ],
             [
                 'lokasi_bidang' => 'Lokasi C',
-                'nama_bidang' => 'Bidang C',
+                'Blok' => 'Blok C',
+                'Bidang' => 'Bidang C',
                 'nama_pemilik' => 'Pemilik C',
                 'latitude' => 106.5450972,
                 'longitude' => -6.3477758,

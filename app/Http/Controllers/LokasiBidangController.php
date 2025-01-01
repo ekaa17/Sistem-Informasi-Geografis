@@ -43,7 +43,7 @@ class LokasiBidangController extends Controller
 
         LokasiBidang::create($validated);
 
-        return redirect()->route('data-maps.index')->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('pages.data-maps.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -52,7 +52,7 @@ class LokasiBidangController extends Controller
     public function edit($id)
     {
         $lokasiBidang = LokasiBidang::findOrFail($id);
-        return view('data-maps.edit', compact('lokasiBidang'));
+        return view('pages.data-maps.edit', compact('lokasiBidang'));
     }
 
     // Memperbarui data Lokasi Bidang
@@ -72,7 +72,7 @@ class LokasiBidangController extends Controller
         $lokasiBidang = LokasiBidang::findOrFail($id);
         $lokasiBidang->update($validated);
 
-        return redirect()->route('data-maps.index')->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('pages.data-maps.index')->with('success', 'Data berhasil diperbarui');
     }
 
     // Menghapus data Lokasi Bidang
@@ -81,7 +81,7 @@ class LokasiBidangController extends Controller
         $lokasiBidang = LokasiBidang::findOrFail($id);
         $lokasiBidang->delete();
 
-        return redirect()->route('data-maps.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('pages.data-maps.index')->with('success', 'Data berhasil dihapus');
     }
 
     public function titik_lokasi() {
