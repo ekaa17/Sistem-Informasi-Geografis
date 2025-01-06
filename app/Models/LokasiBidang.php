@@ -13,8 +13,6 @@ class LokasiBidang extends Model
         'lokasi_bidang',
         'nama_bidang',
         'nama_pemilik',
-        'latitude',
-        'longitude',
         'luas_lahan',
         'atas_hak',
         'tanggal_transaksi',

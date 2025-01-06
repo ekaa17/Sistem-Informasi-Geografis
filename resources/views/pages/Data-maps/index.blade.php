@@ -48,11 +48,10 @@
                                         <th>blok </th>
                                         <th>Bidang </th>
                                         <th>Nama Pemilik</th>
-                                        <th>Longitude</th>
-                                        <th>Latitude</th>
                                         <th>Luas Lahan (m²)</th>
                                         <th>Atas Hak</th>
                                         <th>Tanggal Transaksi</th>
+                                        <th>Data</th>
                                         <th>Aksi</th>
                                     </tr>
 
@@ -65,17 +64,21 @@
                                         <td>{{ $lokasiBidang->blok }}</td>
                                         <td>{{ $lokasiBidang->Bidang }}</td>
                                         <td>{{ $lokasiBidang->nama_pemilik }}</td>
-                                        <td>{{ $lokasiBidang->longitude }}</td>
-                                        <td>{{ $lokasiBidang->latitude }}</td>
                                         <td>{{ $lokasiBidang->luas_lahan }} m²</td>
                                         <td>{{ $lokasiBidang->atas_hak }}</td>
                                         <td>{{ $lokasiBidang->tanggal_transaksi }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $lokasiBidang->id }}">
+                                                <a href="{{ route('data-lahan.show', $lokasiBidang->id) }}" class="btn btn-danger ">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </a> 
+                                                
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal{{ $lokasiBidang->id }}">
                                                     <i class="bi bi-pencil-fill"></i>
                                                 </button>
                                                 <!-- Tombol Hapus -->
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $lokasiBidang->id }}">
+                                            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $lokasiBidang->id }}">
                                                 <i class="bi bi-trash-fill"></i>
                                             </button>
                                             </td>

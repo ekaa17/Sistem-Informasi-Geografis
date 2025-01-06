@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\LokasiBidang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DetailLokasiBidangController;
+use App\Models\DetailLokasiBidang;
 
 class LokasiBidangController extends Controller
 {
@@ -46,9 +48,16 @@ class LokasiBidangController extends Controller
         return redirect()->route('pages.data-maps.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function show($id)
+    {
+        // Ambil data lokasi bidang berdasarkan ID
+        $lokasiBidang = LokasiBidang::findOrFail($id);
+    
+        $detail_lahan = DetailLokasiBidang::where('id_lokasi_bidangs', $id)->get();
+    
+        return view('pages.data-maps.show', compact('lokasiBidang', 'detail_lahan'));
+    }
+
     public function edit($id)
     {
         $lokasiBidang = LokasiBidang::findOrFail($id);

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\DetailLokasiBidangController;
 use App\Http\Controllers\LahanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiBidangController;
 use App\Http\Controllers\StaffController;
+use App\Models\DetailLokasiBidang;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +32,15 @@ Route::group(['middleware' => 'cekrole:Super Admin,Admin,User'], function() {
         function () {return view('pages/dashboard');
     });
     Route::resource('/data-lahan', LokasiBidangController::class)->names('data-lahan');
+    Route::resource('/detail-lahan', DetailLokasiBidangController::class)->names('detail-lahan');
+   
 });
 
 // Hak akses milik super admin dan admin
 Route::group(['middleware' => 'cekrole:Super Admin,Admin,User'], function() {
     Route::get('/maps', [LokasiBidangController::class, 'titik_lokasi']);
     Route::get('/data-titik', [LokasiBidangController::class, 'json']);
+
 });
 
 // Hak akses milik superadmin
