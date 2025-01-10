@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lokasi_bidangs', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->string('lokasi_bidang'); // Lokasi Bidang
-            $table->string('blok'); // Nama Bidang
-            $table->string('Bidang'); // Nama Bidang
-            $table->string('nama_pemilik'); // Nama Pemilik
-            $table->integer('luas_lahan'); // Luas Lahan
-            $table->string('atas_hak'); // Atas Hak
-            $table->date('tanggal_transaksi'); // Tanggal Transaksi
-            $table->timestamps(); // Kolom created_at dan updated_at
+            $table->id();
+            $table->string('lokasi_bidang');
+            $table->string('blok'); 
+            $table->string('bidang'); 
+            $table->string('nama_pemilik'); 
+            $table->integer('luas_lahan'); 
+            $table->string('atas_hak'); 
+            $table->date('tanggal_transaksi');
+            $table->timestamps();
         });
     }
 

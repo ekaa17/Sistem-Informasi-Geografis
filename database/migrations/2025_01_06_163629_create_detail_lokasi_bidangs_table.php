@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('detail_lokasi_bidangs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_lokasi_bidangs');
-            $table->decimal('latitude', 12, 8); // Latitude (koordinat)
-            $table->decimal('longitude', 12, 8); // Longitude (koordinat)
+            $table->foreignId('id_lokasi_bidangs')->references('id')->on('lokasi_bidangs')->onDelete('cascade');
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 8);
             $table->timestamps();
-           
-           
-            $table->foreign('id_lokasi_bidangs')->references('id')->on('lokasi_bidangs')->onDelete('cascade');
         });
     }
 

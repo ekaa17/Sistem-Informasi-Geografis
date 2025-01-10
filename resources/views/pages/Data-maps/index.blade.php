@@ -44,10 +44,10 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Lokasi Bidang</th>
-                                        <th>blok </th>
-                                        <th>Bidang </th>
-                                        <th>Nama Pemilik</th>
+                                        <th>Lokasi</th>
+                                        <th>Blok</th>
+                                        <th>Bidang</th>
+                                        <th>Pemilik</th>
                                         <th>Luas Lahan (m²)</th>
                                         <th>Atas Hak</th>
                                         <th>Tanggal Transaksi</th>
@@ -62,23 +62,23 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $lokasiBidang->lokasi_bidang }}</td>
                                         <td>{{ $lokasiBidang->blok }}</td>
-                                        <td>{{ $lokasiBidang->Bidang }}</td>
+                                        <td>{{ $lokasiBidang->bidang }}</td>
                                         <td>{{ $lokasiBidang->nama_pemilik }}</td>
                                         <td>{{ $lokasiBidang->luas_lahan }} m²</td>
-                                        <td>{{ $lokasiBidang->atas_hak }}</td>
-                                        <td>{{ $lokasiBidang->tanggal_transaksi }}</td>
+                                        <td>{{ $lokasiBidang->atas_hak }}</td><td>{{ \Carbon\Carbon::parse($lokasiBidang->tanggal_transaksi)->translatedFormat('d F Y') }}</td>
+
                                             <td>
-                                                <a href="{{ route('data-lahan.show', $lokasiBidang->id) }}" class="btn btn-danger ">
+                                                <a href="{{ route('data-lahan.show', $lokasiBidang->id) }}" class="btn btn-sm btn-secondary">
                                                     <i class="bi bi-eye-fill"></i>
                                                 </a> 
                                                 
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#editModal{{ $lokasiBidang->id }}">
+                                                <button type="button" class="btn btn-sm btn-primary " data-bs-toggle="modal" data-bs-target="#editModal{{ $lokasiBidang->id }}">
                                                     <i class="bi bi-pencil-fill"></i>
                                                 </button>
                                                 <!-- Tombol Hapus -->
-                                            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $lokasiBidang->id }}">
+                                            <button type="button" class="btn btn-sm btn-danger " data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $lokasiBidang->id }}">
                                                 <i class="bi bi-trash-fill"></i>
                                             </button>
                                             </td>
@@ -98,35 +98,75 @@
                                                         <div class="modal-body">
                                                             <div class="mb-3">
                                                                 <label for="lokasi_bidang" class="form-label">Lokasi Bidang</label>
-                                                                <input type="text" class="form-control" id="lokasi_bidang" name="lokasi_bidang" value="{{ $lokasiBidang->lokasi_bidang }}" required>
+                                                                <input type="text" class="form-control @error('lokasi_bidang') is-invalid @enderror" 
+                                                                       id="lokasi_bidang" name="lokasi_bidang" value="{{ old('lokasi_bidang', $lokasiBidang->lokasi_bidang) }}">
+                                                                @error('lokasi_bidang')
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <label for="nama_bidang" class="form-label">Nama Bidang</label>
-                                                                <input type="text" class="form-control" id="nama_bidang" name="nama_bidang" value="{{ $lokasiBidang->nama_bidang }}" required>
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-12">
+                                                                    <div class="mb-3">
+                                                                        <label for="nama_bidang" class="form-label">Nama Bidang</label>
+                                                                        <input type="text" class="form-control @error('bidang') is-invalid @enderror" 
+                                                                               id="nama_bidang" name="bidang" value="{{ old('bidang', $lokasiBidang->bidang) }}">
+                                                                        @error('bidang')
+                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="blok" class="form-label">Blok</label>
+                                                                        <input type="text" class="form-control @error('blok') is-invalid @enderror" 
+                                                                               id="blok" name="blok" value="{{ old('blok', $lokasiBidang->blok) }}">
+                                                                        @error('blok')
+                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                             </div>
+                                                    
                                                             <div class="mb-3">
                                                                 <label for="nama_pemilik" class="form-label">Nama Pemilik</label>
-                                                                <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik" value="{{ $lokasiBidang->nama_pemilik }}" required>
+                                                                <input type="text" class="form-control @error('nama_pemilik') is-invalid @enderror" 
+                                                                       id="nama_pemilik" name="nama_pemilik" value="{{ old('nama_pemilik', $lokasiBidang->nama_pemilik) }}">
+                                                                @error('nama_pemilik')
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <label for="latitude" class="form-label">Latitude</label>
-                                                                <input type="number" step="0.0000001" class="form-control" id="latitude" name="latitude" value="{{ $lokasiBidang->latitude }}" required>
+                                                    
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-12">
+                                                                    <div class="mb-3">
+                                                                        <label for="luas_lahan" class="form-label">Luas Lahan (m²)</label>
+                                                                        <input type="number" class="form-control @error('luas_lahan') is-invalid @enderror" 
+                                                                               id="luas_lahan" name="luas_lahan" value="{{ old('luas_lahan', $lokasiBidang->luas_lahan) }}">
+                                                                        @error('luas_lahan')
+                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-12">
+                                                                    <div class="mb-3">
+                                                                        <label for="atas_hak" class="form-label">Atas Hak</label>
+                                                                        <input type="text" class="form-control @error('atas_hak') is-invalid @enderror" 
+                                                                               id="atas_hak" name="atas_hak" value="{{ old('atas_hak', $lokasiBidang->atas_hak) }}">
+                                                                        @error('atas_hak')
+                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <label for="longitude" class="form-label">Longitude</label>
-                                                                <input type="number" step="0.0000001" class="form-control" id="longitude" name="longitude" value="{{ $lokasiBidang->longitude }}" required>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="luas_lahan" class="form-label">Luas Lahan (m²)</label>
-                                                                <input type="number" class="form-control" id="luas_lahan" name="luas_lahan" value="{{ $lokasiBidang->luas_lahan }}" required>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="atas_hak" class="form-label">Atas Hak</label>
-                                                                <input type="text" class="form-control" id="atas_hak" name="atas_hak" value="{{ $lokasiBidang->atas_hak }}" required>
-                                                            </div>
+                                                    
                                                             <div class="mb-3">
                                                                 <label for="tanggal_transaksi" class="form-label">Tanggal Transaksi</label>
-                                                                <input type="date" class="form-control" id="tanggal_transaksi" name="tanggal_transaksi" value="{{ $lokasiBidang->tanggal_transaksi }}" required>
+                                                                <input type="date" class="form-control @error('tanggal_transaksi') is-invalid @enderror" 
+                                                                       id="tanggal_transaksi" name="tanggal_transaksi" value="{{ old('tanggal_transaksi', $lokasiBidang->tanggal_transaksi) }}">
+                                                                @error('tanggal_transaksi')
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -134,6 +174,7 @@
                                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                                         </div>
                                                     </form>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -143,11 +184,11 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel-{{ $lokasiBidang->id }}">Hapus Data Jabatan</h5>
+                                                    <h5 class="modal-title" id="deleteModalLabel-{{ $lokasiBidang->id }}">Hapus Data Lahan</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Apakah Anda yakin ingin menghapus jabatan <strong>{{ $lokasiBidang->nama_bidang }}</strong>?
+                                                    Apakah Anda yakin ingin menghapus data serta titik lokasi <strong>{{ $lokasiBidang->nama_bidang }}</strong>?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="{{ route('data-lahan.destroy', $lokasiBidang->id) }}" method="POST">
@@ -180,40 +221,70 @@
                     <h5 class="modal-title" id="createModalLabel">Tambah Data Baru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <form action="{{ route('data-lahan.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="lokasi_bidang" class="form-label">Lokasi Bidang</label>
-                            <input type="text" class="form-control" id="lokasi_bidang" name="lokasi_bidang" required>
+                            <input type="text" class="form-control @error('lokasi_bidang') is-invalid @enderror" id="lokasi_bidang" name="lokasi_bidang" value="{{ old('lokasi_bidang') }}">
+                            @error('lokasi_bidang')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="nama_bidang" class="form-label">Blok Bidang</label>
-                            <input type="text" class="form-control" id="nama_bidang" name="nama_bidang" required>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="mb-3">
+                                    <label for="bidang" class="form-label">Bidang</label>
+                                    <input type="text" class="form-control @error('bidang') is-invalid @enderror" id="bidang" name="bidang" value="{{ old('bidang') }}">
+                                    @error('bidang')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="mb-3">
+                                    <label for="blok" class="form-label">Blok</label>
+                                    <input type="text" class="form-control @error('blok') is-invalid @enderror" id="blok" name="blok" value="{{ old('blok') }}">
+                                    @error('blok')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="nama_pemilik" class="form-label">Nama Pemilik</label>
-                            <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik" required>
+                            <input type="text" class="form-control @error('nama_pemilik') is-invalid @enderror" id="nama_pemilik" name="nama_pemilik" value="{{ old('nama_pemilik') }}">
+                            @error('nama_pemilik')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="latitude" class="form-label">Latitude</label>
-                            <input type="number" step="0.0000001" class="form-control" id="latitude" name="latitude" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="longitude" class="form-label">Longitude</label>
-                            <input type="number" step="0.0000001" class="form-control" id="longitude" name="longitude" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="luas_lahan" class="form-label">Luas Lahan (m²)</label>
-                            <input type="number" class="form-control" id="luas_lahan" name="luas_lahan" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="atas_hak" class="form-label">Atas Hak</label>
-                            <input type="text" class="form-control" id="atas_hak" name="atas_hak" required>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="mb-3">
+                                    <label for="luas_lahan" class="form-label">Luas Lahan (m²)</label>
+                                    <input type="number" class="form-control @error('luas_lahan') is-invalid @enderror" id="luas_lahan" name="luas_lahan" value="{{ old('luas_lahan') }}">
+                                    @error('luas_lahan')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="mb-3">
+                                    <label for="atas_hak" class="form-label">Atas Hak</label>
+                                    <input type="text" class="form-control @error('atas_hak') is-invalid @enderror" id="atas_hak" name="atas_hak" value="{{ old('atas_hak') }}">
+                                    @error('atas_hak')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="tanggal_transaksi" class="form-label">Tanggal Transaksi</label>
-                            <input type="date" class="form-control" id="tanggal_transaksi" name="tanggal_transaksi" required>
+                            <input type="date" class="form-control @error('tanggal_transaksi') is-invalid @enderror" id="tanggal_transaksi" name="tanggal_transaksi" value="{{ old('tanggal_transaksi') }}">
+                            @error('tanggal_transaksi')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -2,20 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\LokasiBidang;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DetailLokasiBidang extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id_lokasi_bidangs',
-        'latitude',
-        'longitude',
+    protected $table = 'detail_lokasi_bidangs';
+    protected $guards = ['id'];
 
-    ];
+    // protected $fillable = [
+    //     'id_lokasi_bidangs',
+    //     'latitude',
+    //     'longitude',
 
+    // ];
 
     public function lokasi_bidang()
     {

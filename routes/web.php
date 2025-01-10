@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\DetailLokasiBidangController;
-use App\Http\Controllers\LahanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LokasiBidangController;
 use App\Http\Controllers\StaffController;
-use App\Models\DetailLokasiBidang;
+use App\Http\Controllers\LokasiBidangController;
+use App\Http\Controllers\DetailLokasiBidangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +38,7 @@ Route::group(['middleware' => 'cekrole:Super Admin,Admin,User'], function() {
 Route::group(['middleware' => 'cekrole:Super Admin,Admin,User'], function() {
     Route::get('/maps', [LokasiBidangController::class, 'titik_lokasi']);
     Route::get('/data-titik', [LokasiBidangController::class, 'json']);
+    // Route::get('/data-titik/{id}', [LokasiBidangController::class, 'json']);
 
 });
 

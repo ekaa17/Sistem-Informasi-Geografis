@@ -20,43 +20,52 @@
                     <div class="table-responsive">
                         <div id="map" style="width: 100%; height: 750px;"></div>
                     </div>
-                    <script>
 
-                        const map = L.map('map').setView([-6.0258259735842366, 105.96390242532742], 13);    
-                        
+                    <script>
+                        const map = L.map('map').setView([-6.0106218,106.0316497], 18);
+                    
                         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             maxZoom: 19,
                             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                         }).addTo(map);
-
-                        $(document).ready(function() {
-                            $.getJSON('data-titik', function(data) {
-                                $.each(data, function(index) {
-                                    var marker = L.marker([parseFloat(data[index].longitude),parseFloat(data[index].latitude)]).addTo(map);
-
-                                    var popupContent = `
-                                        <b>Bidang:</b> ${data[index].blok}<br>
-                                        <b>Bidang:</b> ${data[index].Bidang}<br>
-                                        <b>Pemilik:</b> ${data[index].nama_pemilik}<br>
-                                        <b>Luas Lahan:</b> ${data[index].luas_lahan} m²<br>
-                                        <b>Atas Hak:</b> ${data[index].atas_hak}<br>
-                                        <b>Tanggal Transaksi:</b> ${data[index].tanggal_transaksi}
+                    
+                        $(document).ready(function () {
+                            // Ambil data dari server
+                            $.getJSON('/data-titik', function (data) {
+                                data.forEach(function (item) {
+                                    // Ambil koordinat untuk membentuk poligon
+                                const coordinates = item.detail_lokasi.map(coord => [
+                                        coord.latitude,
+                                        coord.longitude
+                                    ]);
+                                    console.log(item.detail_lokasi);
+                    
+                                    // Buat poligon dan tambahkan ke peta
+                                    const polygon = L.polygon(coordinates, { color: 'blue' }).addTo(map);
+                    
+                                    // Isi popup dengan data dari item
+                                    const popupContent = `
+                                        <b>Lokasi Bidang:</b> ${item.lokasi_bidang}<br>
+                                        <b>Blok:</b> ${item.blok}<br>
+                                        <b>Bidang:</b> ${item.bidang}<br>
+                                        <b>Pemilik:</b> ${item.nama_pemilik}<br>
+                                        <b>Luas Lahan:</b> ${item.luas_lahan} m²<br>
+                                        <b>Atas Hak:</b> ${item.atas_hak}<br>
+                                        <b>Tanggal Transaksi:</b> ${item.tanggal_transaksi}<br>
                                     `;
-
-                                    // Menambahkan popup ke marker
-                                    marker.bindPopup(popupContent);
-
-            
-                                    // Event ketika marker diklik
-                                    marker.on('click', function() {
+                    
+                                    // Tambahkan popup ke poligon
+                                    polygon.bindPopup(popupContent);
+                    
+                                    // Event klik untuk membuka popup
+                                    polygon.on('click', function () {
                                         this.openPopup();
                                     });
-                                })
-                            })
+                                });
+                            });
                         });
-
                     </script>
-
+                    
 
                 </div>
             </div>
